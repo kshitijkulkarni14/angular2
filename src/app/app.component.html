@@ -1,0 +1,53 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>Customer Name</h1>
+
+<customer-list></customer-list>
+
+<div *ngIf="customer">
+
+  <h1>{{customer.name}}</h1>
+
+  <fieldset>
+    <img [src]="image" />
+  </fieldset>
+
+  <p>{{customer.name}} is in {{customer.address.region}}</p>
+
+  <label [style.color]="color">Favorite Color  </label>
+
+  <button (click)="toggleColor()">Toggle Color  </button>
+
+  <select (change)="changeColor($event.target.value)"> <!-- Also can be done by <select #selector (change) = "changeColor(selector.value)"> -->
+    <option>red</option>
+    <option>blue</option>
+    <option>green</option>
+  </select><br/>
+
+  <!--<button (click)="toggleAddress()">Hide/Show Address</button>-->
+
+  <label><input type="checkbox" [(ngModel)]="showAddress">Show/Hide Address: </label>
+
+  <div *ngIf=showAddress>
+    <fieldset>
+      <label>Street: <input [(ngModel)]="customer.address.street"></label>
+    </fieldset>
+    <fieldset>
+      <label>City: <input [(ngModel)]="customer.address.city"></label>
+    </fieldset>
+    <fieldset>
+      <label>State: 
+      <select [(ngModel)] = "customer.address.state"><!-- (change) = regionChange($event.target.value) -->
+        <option *ngFor="let state of states">{{state}}</option>
+      </select>
+    </label>
+    </fieldset>
+    <fieldset>
+      <label>Region: 
+      <select [(ngModel)] = "customer.address.region"><!-- (change) = regionChange($event.target.value) -->
+        <option *ngFor="let region of regions">{{region}}</option>
+      </select>
+    </label>
+    </fieldset>
+  </div>
+
+</div>

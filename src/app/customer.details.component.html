@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+
+  <h1>
+    <button (click)="left()"><</button>
+      {{customer.name}}
+     <button (click)="right()">></button> 
+  </h1>
+
+  <fieldset>
+    <img [src]="image" />
+  </fieldset>
+
+  <p>{{customer.name}} is in {{customer.address.region}}</p>
+  
+  <!--<button (click)="toggleAddress()">Hide/Show Address</button>-->
+
+  <label><input type="checkbox" [(ngModel)]="showAddress">Show/Hide Address: </label>
+
+  <div *ngIf=showAddress>
+    <customer-address [address]="customer.address"></customer-address>
+  </div>
+
+</div>
